@@ -33,7 +33,6 @@ public class TradeCalculators {
 		responseData.volume = v;
 		responseData.symbol = TradeStarter.symbol;
 		responseData.bar_num = barNumber;
-		System.out.println(new Gson().toJson(responseData));
 		FileUtils.writeDataIntoFile(new Gson().toJson(responseData));
 	}
 
@@ -43,7 +42,6 @@ public class TradeCalculators {
 		responseData.symbol = TradeStarter.symbol;
 		responseData.bar_num = ++barNumber;
 		++barNumber;
-		System.out.println(new Gson().toJson(responseData));
 		FileUtils.writeDataIntoFile(new Gson().toJson(responseData));
 	}
 
