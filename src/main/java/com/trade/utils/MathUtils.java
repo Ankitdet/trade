@@ -8,7 +8,7 @@ import java.text.DecimalFormat;
 /**
  * The Class MathUtils.
  *
- * @author ashraf
+ * @author ankit
  */
 public class MathUtils {
 	

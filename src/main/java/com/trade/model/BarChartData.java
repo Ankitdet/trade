@@ -1,19 +1,38 @@
 package com.trade.model;
+
+import com.google.gson.Gson;
+import com.trade.constants.Constants;
+import com.trade.exception.TradeException;
+import com.trade.service.TradeExecutorStarter;
+import com.trade.utils.FileUtils;
+
 /**
  * The Class TradeResponse.
  *
  * @author ankit
  */
-public class TradeResponse {
+public class BarChartData {
 
 	public double o;
 	public double h;
 	public double l;
 	public double c;
 	public double volume;
-	public String event = "ohlc_notify";
+	public String event = Constants.OHLC_NOTIFY;
 	public String symbol;
 	public long bar_num;
+
+	public BarChartData(double o, double h, double l, double c, double v, long barNumber) throws TradeException {
+		this.o = o;
+		this.h = h;
+		this.l = l;
+		this.c = c;
+		this.volume = v;
+		this.symbol = TradeExecutorStarter.symbol;
+		this.bar_num = barNumber;
+		System.out.println(new Gson().toJson(this));
+		FileUtils.writeDataIntoFile(new Gson().toJson(this));
+	}
 
 	public double getO() {
 		return o;

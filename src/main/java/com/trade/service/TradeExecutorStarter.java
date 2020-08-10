@@ -1,6 +1,11 @@
 package com.trade.service;
 
-public class TradeStarter {
+/**
+ * The Class TradeExecutorStarter.
+ * @author ankit
+ */
+
+public class TradeExecutorStarter {
 
 	public static String symbol;
 	public static int interval;

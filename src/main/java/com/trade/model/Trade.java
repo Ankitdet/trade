@@ -7,11 +7,10 @@ import java.math.BigInteger;
 
 /**
  * The Class Trade.
- *
  * @author ankit
  */
+// Ignore properties : TS, side, T 
 public class Trade {
-	
 	private String sym;
 	private BigInteger TS2;
 	private double P;
@@ -56,8 +55,5 @@ public class Trade {
 	public void setQ(double q) {
 		Q = q;
 	}
-
-	
-	
 	
 }

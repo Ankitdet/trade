@@ -22,7 +22,7 @@ public class TimeUtils {
 		Date date_02 = new Date(date2.longValue());
 		long diff = date_01.getTime() - date_02.getTime();
 		long diffSeconds = diff / 1000 % 60;
-		if (diffSeconds == INTERVAL) {
+		if (diffSeconds < INTERVAL) {
 			return true;
 		}
 		return false;
