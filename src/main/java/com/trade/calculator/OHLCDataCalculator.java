@@ -1,6 +1,6 @@
 package com.trade.calculator;
 
-import com.trade.constants.Constants;
+import com.trade.constants.TradeConstants;
 import com.trade.exception.TradeException;
 import com.trade.model.BarChartData;
 import com.trade.model.BarCloseData;
@@ -14,7 +14,7 @@ import com.trade.utils.TimeUtils;
  * @author ankit
  */
 
-public class TradeCalculators {
+public class OHLCDataCalculator {
 
 	private Trade intervalFirstPrint = null;
 	private double open = 0.0;
@@ -40,12 +40,12 @@ public class TradeCalculators {
 
 					// Set the period close price and get aggregate volume
 					setVolume(trade);
-					new BarChartData(open, high, low, Constants.CLOSE_ZERO, volume, this.barNumber);
+					new BarChartData(open, high, low, TradeConstants.CLOSE_ZERO, volume, this.barNumber);
 					// Reset the intervalFirstPrint to null
 					intervalFirstPrint = null;
 
 					// Set close price for next interval.
-					close = MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT);
+					close = MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT);
 
 					this.setBarChartData(price, trade, volume);
 
@@ -68,15 +68,15 @@ public class TradeCalculators {
 			// Set intervalFirstPrint
 			intervalFirstPrint = trade;
 			// the first trade price in the day (day open price)
-			open = MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT);
+			open = MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT);
 			// the interval low
-			low = MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT);
+			low = MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT);
 			// the interval high
-			high = MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT);
+			high = MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT);
 			// set the initial volume
 			volume = trade.getQ();
 			// set close to Zero
-			close = Constants.CLOSE_ZERO;
+			close = TradeConstants.CLOSE_ZERO;
 			new BarChartData(open, high, low, close, volume, this.barNumber);
 
 		}
@@ -84,11 +84,11 @@ public class TradeCalculators {
 
 	private void setBarChartData(double price, Trade trade, double volume) throws TradeException {
 
-		if (MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT) < low)
-			low = MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT);
+		if (MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT) < low)
+			low = MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT);
 		// Set the current high price
-		if (MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT) > high)
-			high = MathUtils.roundDouble(price, MathUtils.TWO_DEC_DOUBLE_FORMAT);
+		if (MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT) > high)
+			high = MathUtils.roundDouble(price, TradeConstants.TWO_DEC_DOUBLE_FORMAT);
 
 		new BarChartData(open, high, low, close, volume, this.barNumber);
 	}

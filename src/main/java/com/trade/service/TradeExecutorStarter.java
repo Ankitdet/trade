@@ -1,5 +1,7 @@
 package com.trade.service;
 
+import com.trade.constants.TradeConstants;
+
 /**
  * The Class TradeExecutorStarter.
  * @author ankit
@@ -7,13 +9,10 @@ package com.trade.service;
 
 public class TradeExecutorStarter {
 
-	public static String symbol;
-	public static int interval;
-
 	public static void start() {
 		Thread t = new Thread(new Runnable() {
 			public void run() {
-				new TradeExecutorService("/trade.txt", 2, symbol).run();
+				new TradeExecutorService("/trade.txt", 2, TradeConstants.SYMBOL).run();
 			}
 		});
 		t.start();

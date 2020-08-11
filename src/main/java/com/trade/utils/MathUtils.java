@@ -12,8 +12,6 @@ import java.text.DecimalFormat;
  */
 public class MathUtils {
 	
-	public static final String TWO_DEC_DOUBLE_FORMAT = "##.00";
-
 	/**
 	 * Round double.
 	 *

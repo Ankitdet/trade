@@ -1,7 +1,7 @@
 package com.trade.model;
 
 import com.google.gson.Gson;
-import com.trade.constants.Constants;
+import com.trade.constants.TradeConstants;
 import com.trade.exception.TradeException;
 import com.trade.service.TradeExecutorStarter;
 import com.trade.utils.FileUtils;
@@ -18,7 +18,7 @@ public class BarChartData {
 	public double l;
 	public double c;
 	public double volume;
-	public String event = Constants.OHLC_NOTIFY;
+	public String event = TradeConstants.OHLC_NOTIFY;
 	public String symbol;
 	public long bar_num;
 
@@ -28,7 +28,7 @@ public class BarChartData {
 		this.l = l;
 		this.c = c;
 		this.volume = v;
-		this.symbol = TradeExecutorStarter.symbol;
+		this.symbol = TradeConstants.SYMBOL;
 		this.bar_num = barNumber;
 		System.out.println(new Gson().toJson(this));
 		FileUtils.writeDataIntoFile(new Gson().toJson(this));

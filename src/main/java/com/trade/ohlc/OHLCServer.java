@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import com.google.gson.Gson;
+import com.trade.constants.TradeConstants;
 import com.trade.exception.TradeException;
 import com.trade.model.EventSubscription;
 import com.trade.service.TradeExecutorStarter;
@@ -28,9 +29,9 @@ public class OHLCServer {
 			Gson gson = new Gson();
 			EventSubscription eventSubscription = gson.fromJson(name, EventSubscription.class);
 			// Set Symbol
-			TradeExecutorStarter.symbol = eventSubscription.getSymbol();
+			TradeConstants.SYMBOL = eventSubscription.getSymbol();
 			// setInterval
-			TimeUtils.INTERVAL = eventSubscription.getInterval();
+			TradeConstants.INTERVAL = eventSubscription.getInterval();
 			// Start Trading once get requested.
 			TradeExecutorStarter.start();
 		} catch (IOException e) {

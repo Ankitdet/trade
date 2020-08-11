@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.google.gson.Gson;
-import com.trade.calculator.TradeCalculators;
+import com.trade.calculator.OHLCDataCalculator;
 import com.trade.model.Trade;
 
 /**
@@ -17,7 +17,7 @@ import com.trade.model.Trade;
  */
 public class TradeExecutorService {
 
-	private TradeCalculators tradeCalculators;
+	private OHLCDataCalculator tradeCalculators;
 	private String tradeFile;
 	private int simulationTime;
 	private ExecutorService executorService;
@@ -25,7 +25,7 @@ public class TradeExecutorService {
 
 	public TradeExecutorService(String stockTradesFile, int simulationTime, String sym) {
 		super();
-		tradeCalculators = new TradeCalculators();
+		tradeCalculators = new OHLCDataCalculator();
 		this.executorService = Executors.newCachedThreadPool();
 		this.tradeFile = stockTradesFile;
 		this.simulationTime = simulationTime;
